@@ -1,0 +1,254 @@
+* {
+  box sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #caf0ff;
+  color: black;
+  margin: auto;
+  box sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#logo {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  display: block;
+}
+
+.top-navigation {
+  line-height: 30px;
+  margin: 50px 50px 10px 10px;
+  float: right;
+
+}
+
+.float-right {
+  float: right;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#leadslink {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+#leadslink:hover {
+  background: blue;
+  color: white;
+  text-decoration: none;
+}
+
+span {
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.add-lead {
+  border: 10px;
+  background: #caf0ff;  
+  color: #13243e;
+  font-size: 24px;
+  align-items: center;
+  text-align: center;
+  margin: 50px auto auto auto;
+  padding: 20px;
+  width: 50%;
+  
+}
+
+#leadForm {
+  display: none;
+  margin: 4px 10px 0px 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+#lead-table {
+  text-align: center;
+  width: 600px;
+  margin: auto;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+}
+
+#openLead {
+  display: inline-block;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+}
+
+input[type="tel"] {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+}
+
+input[type="email"] {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+}
+#name {
+  width: 70%;
+  margin-bottom: 5px;
+}
+
+#phone {
+  width: 20%;
+  margin-bottom: 5px;
+}
+
+#email {
+  width: 40%;
+  margin-bottom: 5px;
+}
+
+select {  
+  background-color: pink;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+#city {
+  width: 30%;
+}
+
+#state {
+  width: 10%;
+}
+
+#zip {
+  width: 15%;
+}
+
+#submitLead {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.open-lead {
+  border-radius: 7px;
+  font-size: 20px;
+  margin: 10px;
+  padding: 2px 7px;
+}
+
+#closeForm {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: .5px;
+  border-color: black;
+  font-size: 16px;
+  padding: 5px;
+  margin-top: 10px;
+}
+.lead-search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#searchBar {
+  background: white;
+  color: black;
+  width: 400px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.submit-search {
+  width: auto;
+  background: rgb(168, 153, 253);
+  color: black;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 24px;
+  padding: 10px; 
+}
+
+.leadsuccess {
+  margin: auto;
+  text-align: center;
+  font-size: 28px;
+  color: rgb(0, 0, 0);
+  width: 500px;
+  padding: 20px;
+}
+
+.returnHome {
+  margin: 20px auto;
+  width: 10%;
+  border-radius: 10px;
+  background: rgb(132, 201, 6);
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+#hiddenTable {
+  display: none;
+}
+
+/* .hidden{display:none;} */
+

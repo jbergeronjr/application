@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" type="text/css">
+  <script src="/script.js"></script>
+</head>
+  <body>
+    <div class="main-container">
+        <div class="header">
+            <img src="images/Logo.jpg" id="logo" alt="John's Logo">
+            <nav class="top-navigation">
+                <ul> 
+                  <li><a href="createlead.html">Create a Lead</a></li>
+                  <li><a href="viewleads.html" id="leadslink">View Leads</a></li>
+                </ul>
+            </nav>
+          </div>
+        <div class="add-lead">
+          <p>Add Lead</p>
+          <button onclick="openLeadForm()" id="openLead" class="open-lead">Create a New Lead</button>
+          <div class="lead-form">
+            <form method="post" action="/addlead" id="leadForm">
+              <span>Name:<input type="text" id="name" name="name" placeholder="Name" required></span>
+              <br>
+              <span>Phone:<input type="tel" id="phone" name="phone" maxlength="10" placeholder="(555) 555-5555" required pattern="\d{3}[\-]\d{3}[\-]\d{4}"></span>
+              <span>Email:<input type="email" id="email" name="email" maxlength="100" placeholder="your_email@domain.com" required></span>
+              <br>
+              <span>Preferred Contact Method: 
+                <select id="contact" name="preferredContactMethod" required>
+              </span>
+                  <option value="email">E-mail</option>
+                  <option value="phone">Phone</option>
+                  <option value="sms">SMS</option>
+                  <option value="pigeon">Carrier_Pigeon</option>
+                </select>
+              <br>
+              <span>City:<input type="text" id="city" name="city" placeholder="City" required></span>
+              <span>State:<input type="text" id="state" name="state" placeholder="State" required></span>
+              <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" required></span>
+              <div>
+                <input type="submit" id="submitLead" value="submitLead">
+                <button type="button" id="closeForm" onClick="closeLeadForm()">Close Form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="lead-search-container">
+          <input type="text" class="search-bar" id="searchBar" placeholder="Search for a Lead">
+          <button type="submit" class="submit-search">Search</button>
+        </div>
+        <div class="lead-view-container">
+          <div id="lead-table">
+            <ul>
+
+            </ul>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

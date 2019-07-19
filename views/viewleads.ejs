@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" type="text/css">
+  <script src="/script.js"></script>
+</head>
+  <body>
+    <div class="main-container">
+        <div class="header">
+            <img src="images/Logo.jpg" alt="John's Logo">
+            <nav class="top-navigation">
+                <ul> 
+                  <li><a id="leadslink" href="/">Home</a></li>
+                </ul>
+            </nav>
+          </div>
+        <div class="lead-search-container" >
+          <input type="text" class="search-bar" id="searchBar" placeholder="Search for a Lead">
+          <button method="get" action="/viewleads" type="submit" class="submit-search">Search</button>
+        </div>
+        <div class="lead-view-container">
+          <div id="testing">
+            
+          </div>
+            <table id="test-table" class="stripe hover compact">
+                <thead>
+                  <tr>
+                    <th>_id</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>email</th>
+                    <th>Preferred Contact Method</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+        </div>
+    </div>
+  </body>
+</html>

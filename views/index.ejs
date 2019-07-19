@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
+  <script src="/script.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js  "></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('#lead-table').DataTable( {
+        responsive: true,
+        "paging": false,
+        "info": false,
+        "searching": false,
+        "ordering": false,
+        "columnDefs": [
+          {
+            "targets": [0],
+            "visible": false,
+            "searchable": false
+          }
+        ],
+        ajax: {
+          url: '/viewLeads',
+          dataSrc: ''
+        },
+        columns: [
+          { data: '_id',
+          "defaultContent": ''
+          },
+          { data: 'name'},
+          { data: 'phone'},
+          { data: 'email'},
+          { data: 'preferredContactMethod'},
+          { data: 'city'},
+          { data: 'state'},
+          { data: 'zip'}
+
+        ]
+      });
+        
+    });
+  </script>
+</head>
+  <body>
+    <div class="main-container"> 
+        <div class="header">
+            <img src="images/Logo.jpg" id="logo" alt="John's Logo">
+            <nav class="top-navigation">
+                <ul> 
+                  <li><a href="/leads" id="leadslink">View Leads</a></li>
+                </ul>
+            </nav>
+          </div>
+        <div class="add-lead">
+          <p>Add Lead</p>
+          <button onclick="openLeadForm()" id="openLead" class="open-lead">Create a New Lead</button>
+          <div class="lead-form">
+            <form method="post" action="/leadsuccess" id="leadForm">
+              <span>Name:<input type="text" id="name" name="name" placeholder="Name" required></span>
+              <br>
+              <span>Phone:<input type="tel" id="phone" name="phone" maxlength="10" placeholder="(555) 555-5555" required"></span>
+              <span>Email:<input type="email" id="email" name="email" maxlength="100" placeholder="your_email@domain.com" required></span>
+              <br>
+              <span>Preferred Contact Method: 
+                <select id="contact" name="preferredContactMethod" required>
+              </span>
+                  <option value="email">E-mail</option>
+                  <option value="phone">Phone</option>
+                  <option value="sms">SMS</option>
+                  <option value="pigeon">Carrier_Pigeon</option>
+                </select>
+              <br>
+              <span>City:<input type="text" id="city" name="city" placeholder="City" required></span>
+              <span>State:<input type="text" id="state" name="state" placeholder="State" required></span>
+              <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" required></span>
+              <div>
+                <input type="submit" id="submitLead" value="Submit Lead">
+                <button type="button" id="closeForm" onClick="closeLeadForm()">Close Form</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="lead-search-container">
+          <!-- <input type="text" class="search-bar" id="searchBar" placeholder="Search for a Lead"> -->
+          <button type="submit" class="submit-search" id="submit" action="/viewleads" onclick="showTable()">Show Leads</button>
+        </div>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <div id="testing">
+          
+        </div>
+        <div class="lead-view-container" id="hiddenTable">
+          <table id="lead-table" class="stripe hover compact">
+            <thead>
+              <tr>
+                <th>_id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>email</th>
+                <th>Preferred Contact Method</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </body>
+</html>

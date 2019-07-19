@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+  <body>
+    <div class="main-container">
+        <div class="header">
+          <img src="images/Logo.jpg" alt="John's Logo">
+          <nav class="top-navigation">
+              <ul> 
+                <li><a href="index.html">Home</a></li>
+                <li><a href="test.html">View Leads</a></li>
+              </ul>
+          </nav>
+        </div>
+        <div class="add-lead">
+          <p>Add Lead</p>
+          <button id="leadForm" class="open-lead">Create a New Lead</button>
+          <form id="leadForm">
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Phone">
+            <input type="text" placeholder="City">
+            <input type="text" placeholder="State">
+            <input type="text" placeholder="zip">
+            <select>
+                <option value="email">E-mail</option>
+                <option value="phone">Phone</option>
+                <option value="pigeon">Carrier Pigeon</option>
+            </select>
+            <div>
+              <input type="submit">
+            </div>
+          </form>
+        </div>
+    </div>
+  </body>
+</html>
