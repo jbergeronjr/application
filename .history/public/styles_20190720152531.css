@@ -66,8 +66,8 @@ a:hover {
 }
 
 #leadslink:hover {
-  background: white;
-  color: black;
+  background: blue;
+  color: white;
   text-decoration: none;
 }
 

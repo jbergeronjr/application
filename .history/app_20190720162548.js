@@ -59,6 +59,24 @@ app.get('/leads', (req, res) => {
 app.get('/viewleads', (req, res) => {
  Leads.find({}, (err, data) => {
   if(err) throw err;
+  // let leadScore = 0;
+  // for(let i = 0; i < data.length; i++){
+  //   if(name.contains('z')) {
+  //     leadScore += 5;
+  //   } 
+  //   if(zip.startsWith('7')) {
+  //     leadScore += 5;
+  //   } 
+  //   if(preferredContactMethod === 'Phone') {
+  //     leadScore += 3;
+  //   }
+  //   if(preferredContactMethod === 'Carrier Pigeon') {
+  //     leadScore += 1;
+  //   }
+  //   if((state === 'HI') || (state === 'AK')) {
+  //     leadScore -= 100;
+  //   };
+  // }
   console.log(data);
   res.send(data);
   });
