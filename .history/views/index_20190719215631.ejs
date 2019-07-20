@@ -44,8 +44,9 @@
       });
         
     });
+ 
     let getFormValues = (formId) => {
-      let inputs = document.getElementById('leadForm').elements;    
+      let inputs = document.querySelectorAll('#' + formId + ' input');    
       let formValues = {};
 
       for (let i = 0; i < inputs.length; i++) {
@@ -54,15 +55,6 @@
       return formValues;
     };
 
-    let addFormValues = (formId) => {
-        getFormValues(formId);
-        let leadScore = 0;
-        for (let i = 0; i < formValues.length; i++) {
-          if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-            leadScore += 5;
-          };
-        };
-    };
     console.log()
     // let leadScore = 0;
     // for (let i = 0; i < formValues.length; i++) {

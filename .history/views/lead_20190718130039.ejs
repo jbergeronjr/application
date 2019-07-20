@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+  <body>
+<p>Lead created</p>
+  </body>
+</html>
+
+$('#submit').click(function() {
+  console.log('test');
+    $.ajax({
+        type: 'GET',
+        url: 'viewleads',
+        data: $('leadData').serialize(),
+        dataType:"json", //to parse string into JSON object,
+        success: function(data){ 
+            if(data){
+                var len = data.length;
+                var txt = "";
+                if(len > 0){
+                    for(var i=0;i<len;i++){
+                        if(data[i].name && data[i].phone && data[i].email && data[i].preferredContactMethod && data[i].city && data[i].state && data[i].zip){
+                            txt += "<tr><td>"+data[i].name+"</td><td>"+data[i].phone+"</td><td>"+data[i].email+"</td><td>"+data[i].preferredContactMethod+"</td><td>"+data[i].city+"</td><td>"+data[i].state+"</td><td>"+data[i].zip+"</td></tr>";
+                        }
+                    }
+                    if(txt != ""){
+                        $("#lead-table").append(txt).removeClass("hidden");
+                    }
+                }
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+            alert('error: ' + textStatus + ': ' + errorThrown);
+        }
+    });
+    return false;//suppress natural form submission
+});

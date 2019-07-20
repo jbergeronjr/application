@@ -44,32 +44,18 @@
       });
         
     });
-    let getFormValues = (formId) => {
-      let inputs = document.getElementById('leadForm').elements;    
-      let formValues = {};
+ 
+    function getFormValues(formId) {
+    let inputs = document.querySelectorAll('#' + formId + ' input');    
+    let formValues = {};
 
-      for (let i = 0; i < inputs.length; i++) {
-        formValues[inputs[i].id] = inputs[i].value;
-        };
-      return formValues;
-    };
+    for (var i = 0; i < inputs.length; i++) {
+      formValues[inputs[i].id] = inputs[i].value;
+    }
 
-    let addFormValues = (formId) => {
-        getFormValues(formId);
-        let leadScore = 0;
-        for (let i = 0; i < formValues.length; i++) {
-          if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-            leadScore += 5;
-          };
-        };
-    };
-    console.log()
-    // let leadScore = 0;
-    // for (let i = 0; i < formValues.length; i++) {
-    //   if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-    //     leadScore += 5;
-    //   };
-    // };
+    return formValues;
+    console.log(getFormValues('leadForm'));
+}
   </script>
 </head>
   <body>
@@ -105,7 +91,7 @@
               <span>State:<input type="text" id="state" name="state" placeholder="State" required></span>
               <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" required></span>
               <div>
-                <input type="submit" id="submitLead" value="Submit Lead" onclick="getFormValues('leadForm')">
+                <input type="submit" id="submitLead" value="Submit Lead" onclick=getFormValues('leadForm')>
                 <button type="button" id="closeForm" onClick="closeLeadForm()">Close Form</button>
               </div>
             </form>

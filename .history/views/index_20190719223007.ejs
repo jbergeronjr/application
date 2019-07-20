@@ -54,8 +54,8 @@
       return formValues;
     };
 
-    let addFormValues = (formId) => {
-        getFormValues(formId);
+    let addFormValues = () => {
+        getFormValues('leadForm');
         let leadScore = 0;
         for (let i = 0; i < formValues.length; i++) {
           if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {

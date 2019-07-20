@@ -44,32 +44,24 @@
       });
         
     });
-    let getFormValues = (formId) => {
-      let inputs = document.getElementById('leadForm').elements;    
-      let formValues = {};
+ 
+    function getFormValues(formId) {
+    let inputs = document.querySelectorAll('#' + formId + ' input');    
+    let formValues = {};
 
-      for (let i = 0; i < inputs.length; i++) {
-        formValues[inputs[i].id] = inputs[i].value;
-        };
-      return formValues;
-    };
+    for (var i = 0; i < inputs.length; i++) {
+      formValues[inputs[i].id] = inputs[i].value;
+    }
 
-    let addFormValues = (formId) => {
-        getFormValues(formId);
-        let leadScore = 0;
-        for (let i = 0; i < formValues.length; i++) {
-          if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-            leadScore += 5;
-          };
-        };
-    };
-    console.log()
-    // let leadScore = 0;
-    // for (let i = 0; i < formValues.length; i++) {
-    //   if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-    //     leadScore += 5;
-    //   };
-    // };
+    return formValues;
+};
+    let leadScore = 0;
+    for (let i = 0; i < formValues.length; i++) {
+      if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
+        leadScore += 5;
+      }
+      return leadScore;
+    }
   </script>
 </head>
   <body>
