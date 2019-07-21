@@ -68,7 +68,6 @@ app.post('/leadsuccess', (req, res) => {
   let data = new Leads(res.body, leadScore);
   data.save().then(item => {
     res.send('Lead saved to database');
-    console.lo
   })
   .catch(err => {
     res.status(400).send('unable to save to database');
