@@ -23,19 +23,52 @@ const leadsSchema = new mongoose.Schema({
     city: String,
     state: String,
     zip: String,
-    leadscore: Number
 });
+
 
 //note: iterate before sending to database;
 
-let Leads = mongoose.model('Leads', leadsSchema);
+let Leads = mongoose.model('Leads', leadsSchema,);
 
 // routes 
 
 app.post('/leadsuccess', (req, res) => {
-  let data = new Leads(req.body);
+  let values = Object.values(req.body);
+  let lowerName = values[0].toLowerCase();
+  let leadScore = 0;
+  console.log(values);
+  console.log(typeof(values));
+  
+  for(let i = 0; i < 1; i++) {
+    if(lowerName.includes('j')) {
+      leadScore += 3;
+    };
+    if(values[3] === 'carrier pigeon') {
+      leadScore -= 10;
+    } else if(values[3] === 'phone') {
+      leadScore += 7;
+    } else {
+      leadScore;
+    };
+    if((values[5] === 'ak') || (values[5] === 'hi')) {
+      leadScore -= 100;
+    };
+    if(values[6].startsWith('7')) {
+      leadScore += 7;
+    };
+  };
+ 
+  Leads.update( { '$addToSet': { 'leadscore': leadScore } })
+
+  console.log(values);
+  console.log('blank');
+  console.log(req.body);
+  console.log(typeof(leadScore));
+
+  let data = new Leads(res.body, leadScore);
   data.save().then(item => {
     res.send('Lead saved to database');
+    console.lo
   })
   .catch(err => {
     res.status(400).send('unable to save to database');
@@ -59,7 +92,6 @@ app.get('/leads', (req, res) => {
 app.get('/viewleads', (req, res) => {
  Leads.find({}, (err, data) => {
   if(err) throw err;
-  console.log(data);
   res.send(data);
   });
 });
