@@ -12,17 +12,25 @@
   <script>
     $(document).ready(function() {
         $('#lead-table').DataTable( {
+        "order": [[ 8, "desc"]],
         responsive: true,
         "paging": false,
         "info": false,
         "searching": false,
-        "ordering": false,
         "columnDefs": [
+          { 
+          orderable: false, targets: '_all' 
+          },
           {
             "targets": [0],
             "visible": false,
             "searchable": false
           }
+          // {
+          //   "targets": [8],
+          //   "visible": false,
+          //   "searchable": false
+          // }
         ],
         ajax: {
           url: '/viewLeads',
@@ -38,38 +46,13 @@
           { data: 'preferredContactMethod'},
           { data: 'city'},
           { data: 'state'},
-          { data: 'zip'}
-
+          { data: 'zip'},
+          { data: 'score',
+          "defaultContent": ''
+          }
         ]
-      });
-        
+      });     
     });
-    let getFormValues = (formId) => {
-      let inputs = document.getElementById('leadForm').elements;    
-      let formValues = {};
-
-      for (let i = 0; i < inputs.length; i++) {
-        formValues[inputs[i].id] = inputs[i].value;
-        };
-      return formValues;
-    };
-
-    let addFormValues = (formId) => {
-        getFormValues(formId);
-        let leadScore = 0;
-        for (let i = 0; i < formValues.length; i++) {
-          if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-            leadScore += 5;
-          };
-        };
-    };
-    console.log()
-    // let leadScore = 0;
-    // for (let i = 0; i < formValues.length; i++) {
-    //   if(formValues[inputs[i].id] === 'name' && inputs[i].value.includes('z')) {
-    //     leadScore += 5;
-    //   };
-    // };
   </script>
 </head>
   <body>
@@ -102,7 +85,61 @@
                 </select>
               <br>
               <span>City:<input type="text" id="city" name="city" placeholder="City" required></span>
-              <span>State:<input type="text" id="state" name="state" placeholder="State" required></span>
+              <span>State:
+                <select type="text" id="state" name="state" placeholder="State" required>
+              </span>
+                  <option value="AL">AL</option>
+                  <opt  ion value="AK">AK</option>
+                  <option value="AR">AR</option>	
+                  <option value="AZ">AZ</option>
+                  <option value="CA">CA</option>
+                  <option value="CO">CO</option>
+                  <option value="CT">CT</option>
+                  <option value="DC">DC</option>
+                  <option value="DE">DE</option>
+                  <option value="FL">FL</option>
+                  <option value="GA">GA</option>
+                  <option value="HI">HI</option>
+                  <option value="IA">IA</option>	
+                  <option value="ID">ID</option>
+                  <option value="IL">IL</option>
+                  <option value="IN">IN</option>
+                  <option value="KS">KS</option>
+                  <option value="KY">KY</option>
+                  <option value="LA">LA</option>
+                  <option value="MA">MA</option>
+                  <option value="MD">MD</option>
+                  <option value="ME">ME</option>
+                  <option value="MI">MI</option>
+                  <option value="MN">MN</option>
+                  <option value="MO">MO</option>	
+                  <option value="MS">MS</option>
+                  <option value="MT">MT</option>
+                  <option value="NC">NC</option>	
+                  <option value="NE">NE</option>
+                  <option value="NH">NH</option>
+                  <option value="NJ">NJ</option>
+                  <option value="NM">NM</option>			
+                  <option value="NV">NV</option>
+                  <option value="NY">NY</option>
+                  <option value="ND">ND</option>
+                  <option value="OH">OH</option>
+                  <option value="OK">OK</option>
+                  <option value="OR">OR</option>
+                  <option value="PA">PA</option>
+                  <option value="RI">RI</option>
+                  <option value="SC">SC</option>
+                  <option value="SD">SD</option>
+                  <option value="TN">TN</option>
+                  <option value="TX">TX</option>
+                  <option value="UT">UT</option>
+                  <option value="VT">VT</option>
+                  <option value="VA">VA</option>
+                  <option value="WA">WA</option>
+                  <option value="WI">WI</option>	
+                  <option value="WV">WV</option>
+                  <option value="WY">WY</option>
+                </select>
               <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" required></span>
               <div>
                 <input type="submit" id="submitLead" value="Submit Lead">
@@ -135,6 +172,7 @@
                 <th>City</th>
                 <th>State</th>
                 <th>Zip</th>
+                <th>score</th>
               </tr>
             </thead>
             <tbody>
