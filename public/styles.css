@@ -252,3 +252,11 @@ select {
 
 /* .hidden{display:none;} */
 
+th, td { white-space: nowrap; }
+div.dataTables_wrapper {
+    width: auto;
+    margin: 0 auto;
+}
+
+tr { height: 50px; }
+

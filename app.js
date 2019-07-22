@@ -37,14 +37,14 @@ app.post('/leadsuccess', (req, res) => {
   
   for(let i = 0; i < 1; i++) {
     if(lowerName.includes('z')) {
-      leadScore += 3;
+      leadScore += 5;
     };
     // This next conditional is directly related to the total number of sales made. If carrier pigeon sales is 1/10, lead score 
     //shouldn't be affected much. If it's 1/1MM, it should be affected greatly.   
     if(values[3] === 'carrier pigeon') {
-      leadScore -= 10;
+      leadScore -= 5;
     } else if(values[3] === 'phone') {
-      leadScore += 7;
+      leadScore += 5;
     } else {
       leadScore;
     };
@@ -52,7 +52,7 @@ app.post('/leadsuccess', (req, res) => {
       leadScore -= 100;
     };
     if(values[6].startsWith('7')) {
-      leadScore += 7;
+      leadScore += 5;
     };
   };
 

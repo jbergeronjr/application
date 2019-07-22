@@ -81,7 +81,7 @@
                   <option value="email">E-mail</option>
                   <option value="phone">Phone</option>
                   <option value="sms">SMS</option>
-                  <option value="pigeon">Carrier_Pigeon</option>
+                  <option value="carrier pigeon">Carrier_Pigeon</option>
                 </select>
               <br>
               <span>City:<input type="text" id="city" name="city" placeholder="City" required></span>
@@ -140,7 +140,7 @@
                   <option value="WV">WV</option>
                   <option value="WY">WY</option>
                 </select>
-              <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" required></span>
+              <span>Zip:<input type="text" id="zip" name="zip"placeholder="Zip" pattern="[0-9]*" maxlength="5" minlength="5" required></span>
               <div>
                 <input type="submit" id="submitLead" value="Submit Lead">
                 <button type="button" id="closeForm" onClick="closeLeadForm()">Close Form</button>
