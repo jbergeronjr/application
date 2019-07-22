@@ -3,42 +3,86 @@
 <head>
   <title>Lead Dashboard</title>
   <link rel="stylesheet" href="/styles.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
   <script src="/script.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js  "></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('#lead-table').DataTable( {
+        "order": [[ 8, "desc"]],
+        responsive: true,
+        "paging": false,
+        "info": false,
+        "searching": false,
+        "columnDefs": [
+          { 
+          orderable: false, targets: '_all' 
+          },
+          {
+            "targets": [0],
+            "visible": false,
+            "searchable": false
+          },
+          {
+            "targets": [8],
+            "visible": false,
+            "searchable": false
+          }
+        ],
+        ajax: {
+          url: '/viewLeads',
+          dataSrc: ''
+        },
+        columns: [
+          { data: '_id',
+          "defaultContent": ''
+          },
+          { data: 'name'},
+          { data: 'phone'},
+          { data: 'email'},
+          { data: 'preferredContactMethod'},
+          { data: 'city'},
+          { data: 'state'},
+          { data: 'zip'},
+          { data: 'score',
+          "defaultContent": ''
+          }
+        ]
+      });     
+    });
+  </script>
 </head>
   <body>
-    <div class="main-container">
+    <div class="main-container"> 
         <div class="header">
-            <img src="images/Logo.jpg" alt="John's Logo">
+            <img src="images/Logo.jpg" id="logo" alt="John's Logo">
             <nav class="top-navigation">
                 <ul> 
-                  <li><a id="leadslink" href="/">Home</a></li>
+                  <li><a href="/" id="leadslink">Home</a></li>
                 </ul>
             </nav>
           </div>
-        <div class="lead-search-container" >
-          <input type="text" class="search-bar" id="searchBar" placeholder="Search for a Lead">
-          <button method="get" action="/viewleads" type="submit" class="submit-search">Search</button>
-        </div>
-        <div class="lead-view-container">
-          <div id="testing">
-            
-          </div>
-            <table id="test-table" class="stripe hover compact">
-                <thead>
-                  <tr>
-                    <th>_id</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>email</th>
-                    <th>Preferred Contact Method</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+        <div class="lead-view-container" style="display: block">
+          <table id="lead-table" class="stripe hover compact">
+            <thead>
+              <tr>
+                <th>_id</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>E-mail</th>
+                <th>Preferred Contact Method</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>score</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
         </div>
     </div>
   </body>

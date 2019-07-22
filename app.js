@@ -1,7 +1,4 @@
 const express = require('express');
-const mysql = require('mysql');
-const uuid = require('uuid');
-const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
@@ -26,7 +23,6 @@ const leadsSchema = new Schema({
     zip: String,
     score: Number
 });
-
 
 //note: iterate before sending to database;
 
@@ -59,20 +55,12 @@ app.post('/leadsuccess', (req, res) => {
       leadScore += 7;
     };
   };
-  
-// const leadScoreSchema = new Schema();
-// leadScoreSchema.add(leadsSchema).add({ score: Number });
 
   let data = new Leads(req.body); 
   Object.assign(data, {'score': leadScore});
-  console.log(leadScore);
-  console.log(data);
-  data.save().then(item => {
-    res.send('Lead saved to database');
+  data.save((err)=> {
+    if (err) throw err;
   })
-  .catch(err => {
-    res.status(400).send('unable to save to database');
-  });
   res.render('leadsuccess.ejs');
 });
 
@@ -84,10 +72,13 @@ app.get('/index', (req, res) => {
   res.render('index.ejs');
 });
 
+app.delete('/delete/:id', (req, res) => {
+  Leads.findByIdAndRemove({_id: req.params.id});
+});
+
 app.get('/leads', (req, res) => {
   res.render('viewleads.ejs');
 });
-
 
 app.get('/viewleads', (req, res) => {
  Leads.find({}, (err, data) => {
@@ -96,18 +87,9 @@ app.get('/viewleads', (req, res) => {
   });
 });
 
-// app.get('/viewleads', (req, res) => {
-//   Leads.find({}, (err, data) => {
-//     if(err) throw err;
-//     res.send(data);
-//   });
-// });
-
 //function for creating a table
 
 app.use(express.static(__dirname + '/public'));
-
-// const addLead = document.getElementById('submitLead');
 
 app.listen('5000', () => {
   console.log('Server started on port 5000');
