@@ -49,7 +49,7 @@ app.post('/leadsuccess', (req, res) => {
       leadScore;
     };
     if((values[5] === 'AK') || (values[5] === 'HI')) {
-      leadScore -= 20;
+      leadScore -= 50;
     };
     if(values[5] === 'OH'){
       leadScore += 30;
@@ -61,10 +61,19 @@ app.post('/leadsuccess', (req, res) => {
 
   let data = new Leads(req.body); 
   Object.assign(data, {'score': leadScore});
-  data.save((err)=> {
-    if (err) throw err;
+  data.save().then(data => {
+    res.render('leadsuccess.ejs');
   })
-  res.render('leadsuccess.ejs');
+  .catch(err => {
+    res.status(400).send('Unable to save to DB');
+  });
+
+  // let data = new Leads(req.body); 
+  // Object.assign(data, {'score': leadScore});
+  // data.save((err)=> {
+  //   if (err) throw err;
+  // })
+  // res.render('leadsuccess.ejs');
 });
 
 app.get('/', (req, res) => {
