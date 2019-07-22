@@ -31,8 +31,7 @@ let Leads = mongoose.model('Leads', leadsSchema);
 // routes 
 
 app.post('/leadsuccess', (req, res) => {
-  let values = Object.values(req.body);
-  let lowerName = values[0].toLowerCase();
+  let lowerName = req.body.name.toLowerCase();
   let leadScore = 0;
   
   for(let i = 0; i < 1; i++) {
@@ -41,20 +40,20 @@ app.post('/leadsuccess', (req, res) => {
     };
     // This next conditional is directly related to the total number of sales made. If carrier pigeon sales is 1/10, lead score 
     //shouldn't be affected much. If it's 1/1MM, it should be affected greatly.   
-    if(values[3] === 'carrier pigeon') {
+    if(req.body.preferredContactMethod === 'carrier pigeon') {
       leadScore -= 15;
-    } else if(values[3] === 'phone') {
+    } else if(req.body.preferredContactMethod === 'phone') {
       leadScore += 3;
     } else {
       leadScore;
     };
-    if((values[5] === 'AK') || (values[5] === 'HI')) {
+    if((req.body.state === 'AK') || (values[5] === 'HI')) {
       leadScore -= 50;
     };
-    if(values[5] === 'OH'){
+    if(req.body.state === 'OH'){
       leadScore += 30;
     };
-    if(values[6].startsWith('7')) {
+    if(req.body.zip.startsWith('7')) {
       leadScore += 5;
     };
   };
