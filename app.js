@@ -72,9 +72,9 @@ app.get('/index', (req, res) => {
   res.render('index.ejs');
 });
 
-app.delete('/delete/:id', (req, res) => {
-  Leads.findByIdAndRemove({_id: req.params.id});
-});
+// app.delete('/delete/:id', (req, res) => {
+//   Leads.findByIdAndRemove({_id: req.params.id});
+// });
 
 app.get('/leads', (req, res) => {
   res.render('viewleads.ejs');
